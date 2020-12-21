@@ -2,11 +2,11 @@ version: 1
 frontend:
   phases:
     # IMPORTANT - Please verify your build commands
-    build:
+    build: app.py
       commands: []
   artifacts:
     # IMPORTANT - Please verify your build output directory
-    baseDirectory: /app.py
+    baseDirectory: /
     files:
       - '**/*'
   cache:
