@@ -349,4 +349,4 @@ if __name__ == '__main__':
         db.session.commit()
 
     
-    app.run(debug=True, host=172.31.0.1, port=80)
+    app.run(debug=True, host=0.0.0.0, port=80)
