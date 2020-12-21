@@ -330,4 +330,23 @@ def load_logged_user():
         close_db()
         
 if __name__ == '__main__':
-    app.run()
+    db.create_all()
+
+    #Creación usuario administrador por defecto
+    User=Usuario()
+    rol = Roles()
+    administrator = User.query.filter_by(usuario='admin').first()
+    if administrator is None:
+        User.nombre = "Administrator"
+        User.usuario = "admin"
+        User.contraseña = generate_password_hash("Admin123")
+        User.correoelectronico = "mdagoberto@uninorte.edu.co"
+        db.session.add(User)
+        db.session.commit()
+        rol.id_usuario = 1
+        rol.rol = "Admin"
+        db.session.add(rol)
+        db.session.commit()
+
+    
+    app.run(debug=True, host=0.0.0.0, port=80)
